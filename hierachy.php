@@ -65,4 +65,30 @@ class hierachy {
     return ' ';
   }
 
+  public function subTreeDepth($node_name) {
+    $sql = "SELECT node.name, (COUNT(parent.name)-(sub_tree.depth+1)) AS depth
+            FROM categories AS node,
+              categories AS parent,
+                categories AS sub_parent,
+                (
+              	SELECT node.name, (COUNT(parent.name)-1) AS depth
+                    FROM categories AS node,
+              		categories AS parent
+                        WHERE node.left_node BETWEEN parent.left_node AND parent.right_node
+                        AND node.name = ?
+                        GROUP BY node.name
+                        ORDER BY node.left_node
+                ) AS sub_tree
+            WHERE node.left_node BETWEEN parent.left_node AND parent.right_node
+            AND node.left_node BETWEEN sub_parent.left_node AND sub_parent.right_node
+            AND sub_parent.name = sub_tree.name
+            GROUP BY node.name
+            ORDER BY node.left_node";
+
+      if(!$this->_db->query($sql, [$node_name])->error()) {
+        return $this->_db->results();
+      }
+      return ' ';
+  }
+
 }
