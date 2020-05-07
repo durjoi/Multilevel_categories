@@ -19,4 +19,12 @@ class hierachy {
     return ' ';
   }
 
+  public function leafNodes() {
+    $sql = "SELECT name FROM categories WHERE right_node = left_node+1";
+    if(!$this->_db->query($sql)->error()) {
+      return $this->_db->results();
+    }
+    return ' ';
+  }
+
 }
