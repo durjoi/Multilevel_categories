@@ -5,11 +5,12 @@
   // $data = $h->fullTree('televisions');
   // $data = $h->leafNodes();
   // $data = $h->singlePath('mp3 players');
-  $data = $h->getNodeDepth();
+  // $data = $h->getNodeDepth();
+  $data = $h->subTreeDepth('flash');
   // print_r($data);
-
-  foreach ($data as $value) {
-    // print_r($value);
-    echo $value['name'] . ' ' . $value['depth'] . '<br>';
-  }
+  echo $data[0]['name'] . ' ' . $data[0]['depth'];
+  // foreach ($data as $value) {
+  //   // print_r($value);
+  //   echo $value['name'] . ' ' . $value['depth'] . '<br>';
+  // }
  ?>

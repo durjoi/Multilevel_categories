@@ -40,7 +40,6 @@ class hierachy {
 
 
   public function getNodeDepth() {
-
     $sql = "SELECT node.name, (COUNT(parent.name)-1) AS depth
             FROM categories AS node, categories AS parent
             WHERE node.left_node BETWEEN parent.left_node AND parent.right_node
@@ -48,6 +47,19 @@ class hierachy {
             ORDER BY node.left_node";
 
     if(!$this->_db->query($sql)->error()) {
+      return $this->_db->results();
+    }
+    return ' ';
+  }
+
+  public function subTreeDepth($node_name) {
+    $sql = "SELECT node.name, (COUNT(parent.name)-1) AS depth
+            FROM categories AS node, categories AS parent
+            WHERE node.left_node BETWEEN parent.left_node AND parent.right_node
+            AND node.name = ?
+            GROUP BY node.name
+            ORDER BY node.left_node";
+    if(!$this->_db->query($sql, [$node_name])->error()) {
       return $this->_db->results();
     }
     return ' ';
