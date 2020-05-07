@@ -6,7 +6,7 @@
   // $data = $h->leafNodes();
   // $data = $h->singlePath('mp3 players');
   // $data = $h->getNodeDepth();
-  $data = $h->subTreeDepth('flash');
+  $data = $h->nodeDepth('flash');
   // print_r($data);
   echo $data[0]['name'] . ' ' . $data[0]['depth'];
   // foreach ($data as $value) {

@@ -52,7 +52,7 @@ class hierachy {
     return ' ';
   }
 
-  public function subTreeDepth($node_name) {
+  public function nodeDepth($node_name) {
     $sql = "SELECT node.name, (COUNT(parent.name)-1) AS depth
             FROM categories AS node, categories AS parent
             WHERE node.left_node BETWEEN parent.left_node AND parent.right_node
