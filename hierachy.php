@@ -118,4 +118,20 @@ class hierachy {
       return ' ';
   }
 
+  public function productCount() {
+    $sql = "SELECT parent.name, COUNT(products.name) AS products
+          FROM categories AS parent,
+          categories AS node,
+          products
+          WHERE node.left_node BETWEEN parent.left_node AND parent.right_node
+          AND node.category_id = products.category_id
+          GROUP BY parent.name
+          ORDER BY parent.left_node";
+
+          if(!$this->_db->query($sql)->error()) {
+            return $this->_db->results();
+          }
+          return ' ';
+  }
+
 }

@@ -11,9 +11,10 @@
   // echo $data[0]['name'] . ' ' . $data[0]['depth'];
   //
   // $data = $h->subTreeDepth('PORTABLE ELECTRONICS');
-  $data = $h->getLocalSubNodes('PORTABLE ELECTRONICS');
+  // $data = $h->getLocalSubNodes('PORTABLE ELECTRONICS');
+  $data = $h->productCount();
   foreach ($data as $value) {
     // print_r($value);
-    echo $value['name'] . ' ' . $value['depth'] . '<br>';
+    echo $value['name'] . ' ' . $value['products'] . '<br>';
   }
  ?>
