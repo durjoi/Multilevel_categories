@@ -10,7 +10,8 @@
   // print_r($data);
   // echo $data[0]['name'] . ' ' . $data[0]['depth'];
   //
-  $data = $h->subTreeDepth('PORTABLE ELECTRONICS');
+  // $data = $h->subTreeDepth('PORTABLE ELECTRONICS');
+  $data = $h->getLocalSubNodes('PORTABLE ELECTRONICS');
   foreach ($data as $value) {
     // print_r($value);
     echo $value['name'] . ' ' . $value['depth'] . '<br>';
