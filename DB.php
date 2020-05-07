@@ -6,7 +6,7 @@ class DB {
 
   final private function __construct() {
     try {
-      $this->_pdo = new PDO("mysql:host=localhost;dbname=list_model", 'root', '');
+      $this->_pdo = new PDO("mysql:host=localhost;dbname=hierachy", 'root', '');
     } catch (PDOException $e) {
       die( "Connection Failed: ".$e->getMessage());
     }
