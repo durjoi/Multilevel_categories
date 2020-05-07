@@ -27,4 +27,16 @@ class hierachy {
     return ' ';
   }
 
+  public function singlePath($node_name) {
+    $sql = "SELECT parent.name
+            FROM categories AS node, categories AS parent
+            WHERE node.left_node BETWEEN parent.left_node AND parent.right_node
+            AND node.name = ?;";
+    if(!$this->_db->query($sql, [$node_name])->error()) {
+      return $this->_db->results();
+    }
+    return ' ';
+
+  }
+
 }

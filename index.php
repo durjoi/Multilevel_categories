@@ -3,7 +3,8 @@
   $h = new hierachy();
   // $data = $h->fullTree('electronics');
   // $data = $h->fullTree('televisions');
-  $data = $h->leafNodes();
+  // $data = $h->leafNodes();
+  $data = $h->singlePath('mp3 players');
   // print_r($data);
 
   foreach ($data as $value) {
